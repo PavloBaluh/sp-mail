@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<span th:replace="fragments::header('hi')"></span>
+<body>
+<h1>[[${msg}]]</h1>
+<form action="/save" method="post" th:object="${user}" enctype="multipart/form-data">
+    <input  type="text" th:field="*{name}">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</p>
+    <input type="email" th:field="*{emails}">
+    <input type="file" name="picture">
+    <input type="submit">
+</form>
+
+
+<!--<ol>-->
+    <!--<li th:each="u : ${users}">-->
+        <!--<a th:href="@{'user-' + ${u.id}}" th:text="${u.name}"></a>-->
+        <!--<div>-->
+            <!--<img th:src="@{'/ava/' + ${u.picture}}">-->
+        <!--</div>-->
+    <!--</li>-->
+<!--</ol>-->
+</body>
+</html>
